@@ -22,7 +22,7 @@ void NetworkManager::update(sf::Time dt)
     receive();
 
     // add buffered messages to event queue to be applied just before sending
-    if (mTime.asSeconds() >= 0.1)
+    if (mTime.asSeconds() >= 0.08)
     {
         auto now = std::chrono::high_resolution_clock::now();
         auto absolute_timestamp = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch()).count();
@@ -380,7 +380,7 @@ void Server::NetworkManager::send()
     // send game state snapshots
     sf::Packet packet;
     sf::Socket::Status status;
-    if (mTime.asSeconds() >= 0.1)
+    if (mTime.asSeconds() >= 0.08)
     {
         for (auto client : mClients)
         {

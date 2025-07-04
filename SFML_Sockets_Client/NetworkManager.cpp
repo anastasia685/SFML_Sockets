@@ -19,7 +19,7 @@ void NetworkManager::update(Player** player, SceneNode& rootPlayerNode, SceneNod
     receive(player, rootPlayerNode, rootBulletNode);
 
     // apply messages
-    if (mTimeRead.asSeconds() > 0.1)
+    if (mTimeRead.asSeconds() > 0.08)
     {
         const std::vector<SceneNode::Ptr>& players = rootPlayerNode.getChildren();
         PlayerMessage msg;
@@ -235,7 +235,7 @@ void NetworkManager::update(Player** player, SceneNode& rootPlayerNode, SceneNod
 void NetworkManager::send(Player* player)
 {
     //send
-    if (mTimeSend.asSeconds() >= 0.07)
+    if (mTimeSend.asSeconds() >= 0.05)
     {
         sf::Packet packet;
         sf::Socket::Status status;
